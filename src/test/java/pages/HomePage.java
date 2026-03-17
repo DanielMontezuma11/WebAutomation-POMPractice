@@ -22,6 +22,9 @@ public class HomePage extends BasePage{
     @FindBy(className = "shopping_cart_link")
     WebElement cartBtn;
 
+    @FindBy(id = "react-burger-menu-btn")
+    WebElement menuBtn;
+
     public void addRandomProduct(){
         Random rand = new Random();
         WebElement product = products.get(rand.nextInt(products.size()));
@@ -30,5 +33,9 @@ public class HomePage extends BasePage{
 
     public void goToCart(){
         waitForClickeable(cartBtn).click();
+    }
+
+    public void goToMenu(){
+        waitForClickeable(menuBtn).click();
     }
 }

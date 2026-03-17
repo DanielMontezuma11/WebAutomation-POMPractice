@@ -5,11 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+public class LoginPage extends BasePage{
     WebDriver driver;
 
     public LoginPage(WebDriver driver){
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 
@@ -23,8 +23,8 @@ public class LoginPage {
     WebElement loginBtn;
 
     public void login(String user, String pass){
-        username.sendKeys(user);
-        password.sendKeys(pass);
-        loginBtn.click();
+        waitForVisibility(username).sendKeys(user);
+        waitForVisibility(password).sendKeys(pass);
+        waitForClickeable(loginBtn).click();
     }
 }
